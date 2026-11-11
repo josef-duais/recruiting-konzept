@@ -109,24 +109,63 @@ section{padding-block:72px}
   padding:18px 20px; font-weight:600;
 }
 
-/* Funnel band */
+/* Funnel band + interaktive Demo */
 .band{background:var(--deep); color:var(--deep-ink)}
 .band .lead{color:var(--deep-muted)}
-.steps{display:flex; flex-direction:column; gap:14px; margin-top:40px; counter-reset:step}
-.step{
-  display:grid; grid-template-columns:64px 1fr; gap:18px; align-items:start;
-  background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.12);
-  border-radius:12px; padding:20px 22px;
-}
-.step .num{
-  font-family:'Archivo'; font-weight:900; font-size:1.7rem; color:var(--amber);
-  font-variant-numeric:tabular-nums;
-}
-.step h3{color:var(--deep-ink); margin-bottom:6px}
-.step p{color:var(--deep-muted); font-size:.95rem}
-.step .tag{display:inline-block; margin-top:10px; font-size:.72rem; font-weight:800; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--amber)}
-@media (max-width:560px){.step{grid-template-columns:1fr; gap:8px}}
+.demo{display:grid; grid-template-columns:minmax(0,1fr) 370px; gap:44px; align-items:start; margin-top:40px}
+@media (max-width:880px){.demo{grid-template-columns:1fr}}
+.flow{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+.flow li{display:grid; grid-template-columns:44px 1fr; gap:14px; padding:16px 14px;
+  border-left:3px solid transparent; border-bottom:1px solid rgba(255,255,255,.1);
+  opacity:.5; transition:opacity .25s, background .25s}
+.flow li:last-child{border-bottom:none}
+.flow li.active{opacity:1; border-left-color:var(--amber); background:rgba(255,255,255,.05)}
+.flow li.done{opacity:.8}
+.fnum{font-family:'Archivo'; font-weight:900; font-size:1.25rem; color:var(--amber); font-variant-numeric:tabular-nums}
+.flow b{display:block; color:var(--deep-ink); font-family:'Archivo'; font-size:.98rem}
+.flow li>div>span{color:var(--deep-muted); font-size:.85rem}
+/* Telefon-Demo: bewusst immer heller App-Look, unabhängig vom Theme */
+.pdemo{display:flex; flex-direction:column; align-items:center; gap:14px; min-width:0}
+.pframe{width:min(330px,100%); background:#0c100b; border-radius:36px; padding:12px;
+  box-shadow:0 24px 60px rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.15)}
+.pscreen{background:#f6f6f2; color:#1d2520; border-radius:26px; overflow:hidden; min-height:572px; display:flex; flex-direction:column}
+.scr{display:flex; flex-direction:column; gap:12px; padding:18px; flex:1}
+.scr h4{margin:0; font-family:'Archivo'; font-size:1.05rem; color:#1d2520; line-height:1.25}
+.ig-top{display:flex; align-items:center; gap:10px}
+.ig-av{width:38px; height:38px; border-radius:50%; background:#fff; border:1px solid #ddd; overflow:hidden; display:flex; align-items:center; justify-content:center; flex:0 0 auto}
+.ig-av img{width:32px; height:auto}
+.ig-top b{display:block; font-size:.82rem; color:#1d2520}
+.ig-top span{font-size:.72rem; color:#7a847a}
+.ig-img{background:linear-gradient(160deg,#2e6b3e,#15301d); border-radius:12px; aspect-ratio:1/1.02;
+  display:flex; flex-direction:column; justify-content:center; gap:10px; padding:20px; color:#fff; max-width:100%}
+.ig-badge{background:#e0821f; color:#fff; font-weight:800; font-size:.68rem; letter-spacing:.12em; padding:4px 10px; border-radius:999px; width:fit-content}
+.ig-img strong{font-family:'Archivo'; font-size:1.45rem; line-height:1.15}
+.ig-img em{font-style:normal; font-size:.8rem; opacity:.85}
+.ig-cap{font-size:.8rem; color:#434c43}
+.pbtn{background:#e0821f; color:#fff; border:none; border-radius:10px; padding:13px 16px; font:inherit; font-weight:800; cursor:pointer; width:100%}
+.pbtn:hover{filter:brightness(1.06)}
+.pnote{font-size:.74rem; color:#7a847a; text-align:center}
+.lp-logo{width:170px; align-self:center; background:#fff; padding:8px 12px; border-radius:10px; border:1px solid #e2e1d6}
+.lp-benefits{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px}
+.lp-benefits li{background:#fff; border:1px solid #e2e1d6; border-radius:9px; padding:10px 12px; font-size:.84rem; font-weight:600}
+.qprog{height:6px; background:#e4e3d8; border-radius:3px; overflow:hidden}
+.qprog i{display:block; height:100%; background:#e0821f; width:6%; transition:width .3s}
+.qcount{font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#7a847a; margin-bottom:6px}
+.qopts{display:flex; flex-direction:column; gap:8px; margin-top:10px}
+.qopt{text-align:left; background:#fff; border:1px solid #d9d8cc; border-radius:9px; padding:11px 13px; font:inherit; font-size:.84rem; font-weight:600; cursor:pointer; color:#1d2520}
+.qopt:hover{border-color:#2e6b3e}
+.qopt:focus-visible,.pbtn:focus-visible,.demo-restart:focus-visible{outline:2px solid #e0821f; outline-offset:2px}
+#demo-form{display:flex; flex-direction:column; gap:8px}
+#demo-form label{font-size:.74rem; font-weight:700; color:#434c43; margin-top:4px}
+#demo-form input{font:inherit; font-size:.9rem; padding:11px 12px; border:1px solid #d9d8cc; border-radius:9px; background:#fff; color:#1d2520}
+.done-ic{width:64px; height:64px; border-radius:50%; background:#2e6b3e; color:#fff; font-size:1.8rem; display:flex; align-items:center; justify-content:center; align-self:center; margin-top:28px}
+.done-ic.warn{background:#b06a14}
+#scr-done,#scr-no{text-align:center}
+.pnote2{font-size:.85rem; color:#434c43}
+.done-box{margin-top:auto; background:#e3ecdd; border:1px solid #c8d8c0; border-radius:10px; padding:12px; font-size:.78rem; text-align:left; color:#1d2520}
+.demo-restart{background:transparent; border:1px solid rgba(255,255,255,.3); color:var(--deep-ink); border-radius:9px; padding:9px 16px; font:inherit; font-weight:700; cursor:pointer}
+.demo-restart:hover{border-color:var(--amber)}
+.scr .demo-restart{border-color:#d9d8cc; color:#1d2520; margin-top:10px}
 
 /* Beispiele */
 .media-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:36px}
@@ -156,30 +195,13 @@ section{padding-block:72px}
 .checklist b{display:block}
 .checklist span{font-size:.9rem; color:var(--muted)}
 
-/* Quali-Demo */
-.quiz{
-  background:var(--card); border:1px solid var(--line); border-radius:14px;
-  max-width:560px; margin-top:36px; padding:26px 26px 30px;
+/* Druck */
+@media print{
+  video{display:none}
+  .phone .screen{height:auto; overflow:visible}
+  section{padding-block:36px}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
 }
-.quiz .progress{height:6px; background:var(--sand); border-radius:3px; overflow:hidden; margin-bottom:22px}
-.quiz .progress i{display:block; height:100%; background:var(--amber); width:25%; transition:width .3s}
-.quiz h3{margin-bottom:16px}
-.quiz .opts{display:flex; flex-direction:column; gap:10px}
-.quiz button.opt{
-  font:inherit; font-weight:600; text-align:left; cursor:pointer;
-  background:var(--paper); color:var(--ink); border:1px solid var(--line);
-  border-radius:9px; padding:12px 16px;
-}
-.quiz button.opt:hover{border-color:var(--green)}
-.quiz button.opt:focus-visible, .quiz .restart:focus-visible{outline:2px solid var(--amber); outline-offset:2px}
-.quiz .result h3{color:var(--green)}
-.quiz .result.no h3{color:var(--amber)}
-.quiz .result p{color:var(--muted); margin-top:10px}
-.quiz .restart{
-  margin-top:20px; font:inherit; font-weight:700; cursor:pointer;
-  background:var(--deep); color:var(--deep-ink); border:none; border-radius:9px; padding:10px 18px;
-}
-.quiz .qcount{font-size:.76rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
 
 /* Ablauf */
 .timeline{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:36px}
@@ -209,8 +231,9 @@ footer{padding-block:28px; border-top:1px solid var(--line); font-size:.78rem; c
     <div class="client-chip">
       <img src="media/logo-lbn.png" alt="Logo Landschaftsbau Nord GmbH – natürlich schöne Gärten">
       <div class="who"><b>Konzept für Landschaftsbau Nord GmbH</b><span>Vertreten durch Julian Kahns</span></div>
+      <div class="who"><b>Vorgelegt von Wachstum Medien</b><span>Josef Al-Duais · Geschäftsführender Gründer</span></div>
     </div>
-    <div class="kicker">Mitarbeitergewinnung · Garten- &amp; Landschaftsbau <span class="dot"></span> Social Recruiting</div>
+    <div class="kicker">Wachstum Medien <span class="dot"></span> Mitarbeitergewinnung · Garten- &amp; Landschaftsbau <span class="dot"></span> Social Recruiting</div>
     <h1>Die besten Leute sind nicht arbeitslos.<br><span class="hl">Sie sind nur offen für etwas Besseres.</span></h1>
     <p class="lead">Gute Fachkräfte im GaLaBau stehen jeden Morgen auf der Baustelle — und lesen keine Stellenbörsen. Wir holen sie dort ab, wo sie jeden Abend sind: auf Facebook und Instagram. Mit Anzeigen, die zeigen, was Landschaftsbau Nord bietet, und einer Seite, die nur die passenden Bewerber durchlässt.</p>
     <div class="facts">
@@ -245,49 +268,79 @@ footer{padding-block:28px; border-top:1px solid var(--line); font-size:.78rem; c
 
 <section class="band">
   <div class="wrap">
-    <span class="eyebrow">Die Strategie</span>
-    <h2>Der Weg vom Scrollen zur Bewerbung</h2>
-    <p class="lead" style="margin-top:14px">Ein durchgehender Prozess — jede Stufe hat genau eine Aufgabe. Am Ende landen bei Ihnen nur Bewerbungen, die Ihre Anforderungen erfüllen.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="num">01</div>
-        <div>
-          <h3>Anzeige auf Facebook &amp; Instagram</h3>
-          <p>Video- und Bild-Anzeigen mit echten Einblicken aus Ihrem Betrieb: Baustellen, Maschinen, Team. Ausgespielt nur an die passende Zielgruppe im Umkreis — Fachkräfte aus dem grünen Gewerk, die nicht aktiv suchen, aber hinschauen, wenn ein Betrieb aus ihrer Region etwas Besseres bietet.</p>
-          <span class="tag">Aufmerksamkeit</span>
+    <span class="eyebrow">Die Strategie — live erleben</span>
+    <h2>Der Weg des Bewerbers: Klicken Sie sich selbst durch</h2>
+    <p class="lead" style="margin-top:14px">Vom Scrollen am Feierabend bis zur fertigen Bewerbung — in unter zwei Minuten. Im Telefon läuft der echte Ablauf, Beispiel: Landschaftsgärtner (m/w/d) bei Landschaftsbau Nord.</p>
+    <div class="demo">
+      <ol class="flow" id="flow">
+        <li data-stage="1"><span class="fnum">01</span><div><b>Anzeige im Feed</b><span>Video oder Bild — regional an Fachkräfte ausgespielt</span></div></li>
+        <li data-stage="2"><span class="fnum">02</span><div><b>Landingpage</b><span>Betrieb, Gehalt und Benefits auf einen Blick</span></div></li>
+        <li data-stage="3"><span class="fnum">03</span><div><b>Qualifizierung</b><span>Wenige Fragen — Ihre Kriterien entscheiden</span></div></li>
+        <li data-stage="4"><span class="fnum">04</span><div><b>Kurzbewerbung</b><span>Name und Telefon — keine Unterlagen</span></div></li>
+        <li data-stage="5"><span class="fnum">05</span><div><b>Bei Ihnen auf dem Tisch</b><span>Vorqualifiziert, in zwei Minuten bewertet</span></div></li>
+      </ol>
+      <div class="pdemo">
+        <div class="pframe">
+          <div class="pscreen">
+            <div class="scr" id="scr-ad">
+              <div class="ig-top">
+                <span class="ig-av"><img src="media/logo-lbn.png" alt=""></span>
+                <div><b>Landschaftsbau Nord GmbH</b><span>Gesponsert</span></div>
+              </div>
+              <div class="ig-img">
+                <span class="ig-badge">Wir suchen dich</span>
+                <strong>Landschaftsgärtner (m/w/d)</strong>
+                <em>Unbefristet · übertariflich · ab sofort</em>
+              </div>
+              <div class="ig-cap">Feste Kolonne, moderner Fuhrpark, Wochenende frei — bei uns zählt dein Handwerk.</div>
+              <button class="pbtn" type="button" data-next="scr-lp" id="demo-ad-cta">Mehr erfahren</button>
+            </div>
+            <div class="scr" id="scr-lp" hidden>
+              <img class="lp-logo" src="media/logo-lbn.png" alt="Landschaftsbau Nord GmbH">
+              <h4>Werde Teil unseres Teams — natürlich schöne Gärten, natürlich gute Arbeit</h4>
+              <ul class="lp-benefits">
+                <li>✓ Übertarifliche Bezahlung + Zulagen</li>
+                <li>✓ Unbefristeter Arbeitsvertrag</li>
+                <li>✓ Moderne Maschinen &amp; Fuhrpark</li>
+                <li>✓ Geregelte Arbeitszeiten</li>
+                <li>✓ Familiäres Team auf Augenhöhe</li>
+              </ul>
+              <button class="pbtn" type="button" data-next="scr-q" id="demo-lp-cta">Jetzt bewerben — dauert 2 Minuten</button>
+              <span class="pnote">Ohne Lebenslauf. Ohne Anschreiben.</span>
+            </div>
+            <div class="scr" id="scr-q" hidden>
+              <div class="qprog"><i id="qbar"></i></div>
+              <div id="qbox"></div>
+            </div>
+            <div class="scr" id="scr-form" hidden>
+              <h4>Fast geschafft!</h4>
+              <p class="pnote2">Wie können wir dich erreichen?</p>
+              <form id="demo-form">
+                <label for="df-name">Vor- und Nachname</label>
+                <input id="df-name" type="text" placeholder="Max Mustermann" autocomplete="off">
+                <label for="df-tel">Telefonnummer</label>
+                <input id="df-tel" type="tel" placeholder="0171 2345678" autocomplete="off">
+                <button class="pbtn" type="submit" id="demo-submit">Bewerbung absenden</button>
+              </form>
+              <span class="pnote">Demo — es wird nichts gesendet</span>
+            </div>
+            <div class="scr" id="scr-done" hidden>
+              <div class="done-ic">✓</div>
+              <h4>Bewerbung eingegangen!</h4>
+              <p class="pnote2">Landschaftsbau Nord meldet sich innerhalb von 24 Stunden bei dir.</p>
+              <div class="done-box"><b>Auf Ihrer Seite:</b> Diese Bewerbung liegt jetzt vorqualifiziert mit allen Antworten in Ihrem Postfach — Name, Telefon, Erfahrung, Startzeitpunkt.</div>
+              <button class="demo-restart" type="button" id="demo-restart-done">⟲ Demo von vorn</button>
+            </div>
+            <div class="scr" id="scr-no" hidden>
+              <div class="done-ic warn">✕</div>
+              <h4>Danke für dein Interesse!</h4>
+              <p class="pnote2">Aktuell passt es leider nicht — wir melden uns, wenn sich das ändert.</p>
+              <div class="done-box"><b>Auf Ihrer Seite:</b> Diese Bewerbung erreicht Sie nie. Wer Ihre Anforderungen nicht erfüllt, kostet Sie keine Minute Sichtungszeit.</div>
+              <button class="demo-restart" type="button" id="demo-restart-no">⟲ Demo von vorn</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="step">
-        <div class="num">02</div>
-        <div>
-          <h3>Landingpage: Ihr Betrieb von seiner besten Seite</h3>
-          <p>Wer klickt, landet auf einer eigenen Seite nur für diese Stelle: Wer Sie sind, was den Job besonders macht, Gehalt und Benefits, Bilder und Videos vom Team. Keine Behördensprache — die Seite verkauft den Arbeitsplatz so, wie Sie Ihren Kunden ein Projekt verkaufen.</p>
-          <span class="tag">Interesse &amp; Vertrauen</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="num">03</div>
-        <div>
-          <h3>Qualifizierung nach Ihren Anforderungen</h3>
-          <p>Vor der Bewerbung beantwortet jeder Interessent wenige gezielte Fragen — zum Beispiel Berufserfahrung, Ausbildung, Führerschein, Startzeitpunkt. Die Kriterien legen Sie fest. Wer nicht passt, kommt gar nicht erst durch.</p>
-          <span class="tag">Filter</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="num">04</div>
-        <div>
-          <h3>Nur passende Bewerbungen auf Ihrem Tisch</h3>
-          <p>Sie bekommen Name, Kontaktdaten und alle Antworten übersichtlich zusammengefasst — statt eines Stapels unpassender Unterlagen. Jede Bewerbung ist vorgeprüft und in zwei Minuten bewertet.</p>
-          <span class="tag">Qualität statt Masse</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="num">05</div>
-        <div>
-          <h3>Gespräch &amp; Einstellung</h3>
-          <p>Sie führen die Gespräche, wir begleiten den Prozess: schnelle Rückmeldung an die Bewerber, Terminierung, Nachfassen. Geschwindigkeit entscheidet — wer drei Tage wartet, verliert den Kandidaten an den nächsten Betrieb.</p>
-          <span class="tag">Besetzung</span>
-        </div>
+        <button class="demo-restart" type="button" id="demo-restart-out">⟲ Demo neu starten</button>
       </div>
     </div>
   </div>
@@ -371,18 +424,6 @@ footer{padding-block:28px; border-top:1px solid var(--line); font-size:.78rem; c
 
 <section style="padding-top:0">
   <div class="wrap">
-    <span class="eyebrow">Live ausprobieren</span>
-    <h2>So funktioniert die Qualifizierung</h2>
-    <p class="lead" style="margin-top:14px">Beispiel mit vier Fragen für eine Facharbeiter-Stelle. Die Kriterien bestimmen Sie — Mindest­erfahrung, Ausbildung, Führerschein, was immer die Stelle verlangt.</p>
-    <div class="quiz" id="quiz">
-      <div class="progress"><i id="quiz-bar"></i></div>
-      <div id="quiz-body"></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
     <span class="eyebrow">Ablauf</span>
     <h2>Von heute bis zur besetzten Stelle</h2>
     <div class="timeline">
@@ -403,55 +444,74 @@ footer{padding-block:28px; border-top:1px solid var(--line); font-size:.78rem; c
       <b>Unser Versprechen</b>
       <p>Wir arbeiten, bis Ihre Stelle besetzt ist. Sie sehen jederzeit, was die Kampagne tut und welche Bewerbungen eingehen — volle Transparenz von der ersten Anzeige bis zur Unterschrift.</p>
     </div>
+    <div class="promise" style="margin-top:16px">
+      <b>Ihr Ansprechpartner</b>
+      <p>Josef Al-Duais · Geschäftsführender Gründer · Wachstum Medien</p>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Konzeptvorstellung Mitarbeitergewinnung für Landschaftsbau Nord GmbH, vertreten durch Julian Kahns · Branchenbeispiele aus der öffentlichen Meta-Werbebibliothek bzw. öffentlich erreichbaren Websites der genannten Betriebe; alle Rechte liegen bei den jeweiligen Unternehmen.</div>
+  <div class="wrap">Ein Konzept von Wachstum Medien · Josef Al-Duais — für Landschaftsbau Nord GmbH, vertreten durch Julian Kahns · Branchenbeispiele aus der öffentlichen Meta-Werbebibliothek bzw. öffentlich erreichbaren Websites der genannten Betriebe; alle Rechte liegen bei den jeweiligen Unternehmen.</div>
 </footer>
 
 <script>
 (function(){
   var questions=[
     {q:"Hast du eine abgeschlossene Ausbildung im Garten- und Landschaftsbau oder einem verwandten Gewerk?",
-     opts:[{t:"Ja, abgeschlossene Ausbildung",ok:true},{t:"Nein, aber mehrjährige Berufspraxis",ok:true},{t:"Nein, ich bin Quereinsteiger ohne Erfahrung",ok:false}]},
+     opts:[{t:"Ja, abgeschlossene Ausbildung",ok:true},{t:"Nein, aber mehrjährige Berufspraxis",ok:true},{t:"Nein, ohne Erfahrung",ok:false}]},
     {q:"Wie viel Berufserfahrung bringst du mit?",
      opts:[{t:"5 Jahre oder mehr",ok:true},{t:"2 bis 5 Jahre",ok:true},{t:"Weniger als 2 Jahre",ok:false}]},
     {q:"Hast du einen Führerschein der Klasse B?",
      opts:[{t:"Ja, Klasse B",ok:true},{t:"Ja, sogar BE / C1",ok:true},{t:"Nein",ok:false}]},
     {q:"Wann könntest du frühestens anfangen?",
-     opts:[{t:"Sofort",ok:true},{t:"Innerhalb von 3 Monaten (Kündigungsfrist)",ok:true},{t:"Ich bin nur neugierig, kein Wechsel geplant",ok:false}]}
+     opts:[{t:"Sofort",ok:true},{t:"Innerhalb von 3 Monaten",ok:true},{t:"Nur neugierig, kein Wechsel geplant",ok:false}]}
   ];
-  var body=document.getElementById('quiz-body'), bar=document.getElementById('quiz-bar');
-  var i=0, passed=true;
+  var flow=document.getElementById('flow');
+  var stages={'scr-ad':1,'scr-lp':2,'scr-q':3,'scr-form':4,'scr-done':5,'scr-no':3};
+  var scrs=document.querySelectorAll('.scr');
+  var qi=0;
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-  function render(){
-    if(i>=questions.length){return result()}
-    bar.style.width=((i)/questions.length*100||4)+'%';
-    var q=questions[i];
-    var html='<div class="qcount">Frage '+(i+1)+' von '+questions.length+'</div><h3>'+esc(q.q)+'</h3><div class="opts">';
-    q.opts.forEach(function(o,j){
-      html+='<button class="opt" type="button" id="quiz-q'+i+'-o'+j+'" data-ok="'+o.ok+'">'+esc(o.t)+'</button>';
+  function setStage(n){
+    flow.querySelectorAll('li').forEach(function(li){
+      var s=+li.dataset.stage;
+      li.classList.toggle('active', s===n);
+      li.classList.toggle('done', s<n);
     });
-    html+='</div>';
-    body.innerHTML=html;
-    body.querySelectorAll('.opt').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        if(btn.dataset.ok==='false'){passed=false}
-        i++; render();
+  }
+  function show(id){
+    scrs.forEach(function(s){s.hidden=(s.id!==id)});
+    setStage(stages[id]||1);
+    if(id==='scr-q'){qi=0; renderQ()}
+  }
+  function renderQ(){
+    if(qi>=questions.length){show('scr-form'); return}
+    var box=document.getElementById('qbox'), bar=document.getElementById('qbar');
+    bar.style.width=(qi/questions.length*100||6)+'%';
+    var q=questions[qi];
+    var h='<div class="qcount">Frage '+(qi+1)+' von '+questions.length+'</div><h4>'+esc(q.q)+'</h4><div class="qopts">';
+    q.opts.forEach(function(o,j){
+      h+='<button type="button" class="qopt" id="dq'+qi+'o'+j+'" data-ok="'+o.ok+'">'+esc(o.t)+'</button>';
+    });
+    h+='</div>';
+    box.innerHTML=h;
+    box.querySelectorAll('.qopt').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(b.dataset.ok==='false'){show('scr-no'); return}
+        qi++; renderQ();
       });
     });
   }
-  function result(){
-    bar.style.width='100%';
-    if(passed){
-      body.innerHTML='<div class="result"><h3>✓ Qualifiziert — die Bewerbung landet bei Ihnen</h3><p>Jetzt würde der Bewerber nur noch Name und Telefonnummer eintragen. Sie erhalten die Bewerbung samt aller Antworten und rufen innerhalb von 24 Stunden zurück.</p><button class="restart" type="button" id="quiz-restart">Noch einmal durchspielen</button></div>';
-    }else{
-      body.innerHTML='<div class="result no"><h3>Nicht qualifiziert — diese Bewerbung erreicht Sie nie</h3><p>Genau das ist der Filter: Wer Ihre Anforderungen nicht erfüllt, wird freundlich verabschiedet und kostet Sie keine Minute Sichtungszeit.</p><button class="restart" type="button" id="quiz-restart">Noch einmal durchspielen</button></div>';
-    }
-    document.getElementById('quiz-restart').addEventListener('click',function(){i=0;passed=true;render()});
-  }
-  render();
+  document.querySelectorAll('[data-next]').forEach(function(b){
+    b.addEventListener('click',function(){show(b.dataset.next)});
+  });
+  document.getElementById('demo-form').addEventListener('submit',function(e){
+    e.preventDefault(); show('scr-done');
+  });
+  ['demo-restart-done','demo-restart-no','demo-restart-out'].forEach(function(id){
+    document.getElementById(id).addEventListener('click',function(){show('scr-ad')});
+  });
+  setStage(1);
 })();
 </script>
 
